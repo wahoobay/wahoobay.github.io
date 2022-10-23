@@ -1,6 +1,7 @@
 {
-  "name": "hyper-react",
-  "version": "3.0.0",
+  "name": "wahoobay",
+  "version": "0.1.0",
+  "homepage": "http://everythingisalrighforever.com",
   "private": true,
   "dependencies": {
     "@fullcalendar/bootstrap": "^5.10.1",
@@ -62,6 +63,8 @@
     "yup": "^0.32.9"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -89,6 +92,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.153.0",
+    "gh-pages": "^4.0.0",
     "prettier": "2.3.1",
     "redux-saga-test-plan": "^4.0.1"
   }

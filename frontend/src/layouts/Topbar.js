@@ -92,6 +92,21 @@ const ProfileMenus = [
         icon: 'mdi mdi-account-circle',
         redirectTo: '#',
     },
+    // {
+    //     label: 'Settings',
+    //     icon: 'mdi mdi-account-edit',
+    //     redirectTo: '#',
+    // },
+    // {
+    //     label: 'Support',
+    //     icon: 'mdi mdi-lifebuoy',
+    //     redirectTo: '#',
+    // },
+    // {
+    //     label: 'Lock Screen',
+    //     icon: 'mdi mdi-lock-outline',
+    //     redirectTo: '/account/lock-screen',
+    // },
     {
         label: 'Logout',
         icon: 'mdi mdi-logout',
@@ -178,14 +193,14 @@ const Topbar = ({ hideLogo, navCssClasses, openLeftMenuCallBack, topbarDark }: T
                         </li>
                         {/* <li className="dropdown notification-list d-none d-sm-inline-block">
                             <AppsDropdown />
-                        </li> */}
-                        {/* <li className="notification-list">
+                        </li> 
+                        <li className="notification-list">
                             <button
                                 className="nav-link dropdown-toggle end-bar-toggle arrow-none btn btn-link shadow-none"
                                 onClick={handleRightSideBar}>
                                 <i className="dripicons-gear noti-icon"></i>
                             </button>
-                        </li> */}
+                        </li> */ }
                         <li className="dropdown notification-list">
                             <ProfileDropdown
                                 profilePic={profilePic}

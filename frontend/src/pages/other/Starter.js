@@ -250,8 +250,7 @@ const Ribbon1 = ({ label, color, direction }) => {
                         <span className="h3">
                         <button className={classNames('btn', 'btn-sm', [`btn-${color}`])}>Get Involved</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;
+                        
                         <Link to="#"><i className="uil  uil-facebook"></i></Link>&nbsp;
                         <Link to="#"><i className="uil  uil-twitter"></i></Link>&nbsp;
                         <Link to="#"><i className="uil  uil-instagram"></i></Link>&nbsp;
@@ -377,7 +376,7 @@ const Starter = (): React$Element<React$FragmentType> => {
                             </p>
                             <div className="ratio ratio-16x9">
                                 <iframe
-                                    src="https://www.youtube.com/embed/bcCbQQAq-2E?rel=0&amp;start&amp;end&amp;controls=1&amp;mute=0&amp;modestbranding=0&amp;autoplay=1"
+                                    src="https://www.youtube.com/embed/bcCbQQAq-2E?rel=0&amp;start&amp;end&amp;controls=1&amp;mute=0&amp;modestbranding=0&amp;autoplay=0"
                                     title="iframe"></iframe>
                             </div>
                         </Card.Body>

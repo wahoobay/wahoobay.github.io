@@ -37,22 +37,22 @@ const ChatUsers = ({ onUserSelect }: ChatUsersProps): React$Element<React$Fragme
     /**
      * Filter users
      */
-    const filterUsers = (group) => {
-        setSelectedGroup(group);
-        setUser(
-            group !== 'All'
-                ? [...users].filter((u) => u.groups.toLowerCase().indexOf(group.toLowerCase()) >= 0)
-                : [...users]
-        );
-    };
+     const filterUsers = (group) => {
+         setSelectedGroup(group);
+         setUser(
+             group !== 'All'
+                 ? [...users].filter((u) => u.groups.toLowerCase().indexOf(group.toLowerCase()) >= 0)
+                 : [...users]
+         );
+     };
 
-    /**
-     * Search the user
-     * @param {*} text
-     */
-    const search = (text) => {
-        setUser(text ? [...users].filter((u) => u.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : [...users]);
-    };
+     /**
+      * Search the user
+      * @param {*} text
+      */
+     const search = (text) => {
+         setUser(text ? [...users].filter((u) => u.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : [...users]);
+     };
 
     /**
      * Activates the user

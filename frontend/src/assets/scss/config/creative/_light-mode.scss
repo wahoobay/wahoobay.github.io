@@ -92,12 +92,12 @@
     --#{$variable-prefix}input-group-addon-border-color:                 #{map-get($grays, "300")};
 
     // scss-docs-start form-select-variables
-    --#{$variable-prefix}form-select-color:                              #{$input-color};
-    --#{$variable-prefix}form-select-bg:                                 #{$input-bg};
-    --#{$variable-prefix}form-select-disabled-color:                     #{map-get($grays, "600")};
-    --#{$variable-prefix}form-select-disabled-bg:                        #{map-get($grays, "200")};
-    --#{$variable-prefix}form-select-disabled-border-color:              #{$input-disabled-border-color};
-    --#{$variable-prefix}form-select-indicator-color:                    #{map-get($grays, "800")};
+    // --#{$variable-prefix}form-select-color:                              #{$input-color};
+    // --#{$variable-prefix}form-select-bg:                                 #{$input-bg};
+    // --#{$variable-prefix}form-select-disabled-color:                     #{map-get($grays, "600")};
+    // --#{$variable-prefix}form-select-disabled-bg:                        #{map-get($grays, "200")};
+    // --#{$variable-prefix}form-select-disabled-border-color:              #{$input-disabled-border-color};
+    // --#{$variable-prefix}form-select-indicator-color:                    #{map-get($grays, "800")};
 
     // scss-docs-start form-range-variables
     --#{$variable-prefix}form-range-track-bg:                            #{map-get($grays, "300")};

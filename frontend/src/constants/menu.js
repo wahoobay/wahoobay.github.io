@@ -47,14 +47,14 @@ const MENU_ITEMS = [
         label: 'Events',
         isTitle: false,
         icon: 'uil-calender',
-        url: '/apps/calendar',
+        url: '#',
     },
     {
         key: 'apps-chat',
         label: 'Education',
         isTitle: false,
         icon: 'uil-book-open',
-        url: '/apps/chat',
+        url: '#',
     },
     // // {
     // //     key: 'apps-crm',

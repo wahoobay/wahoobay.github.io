@@ -145,12 +145,12 @@ body[data-layout-color="dark"] {
      --#{$variable-prefix}input-group-addon-bg: #{tint-color(map-get($dark-grays, "300"), 1%)};
      --#{$variable-prefix}input-group-addon-border-color: #{$input-border-color};
 
-     // scss-docs-start form-select-variables
-     --#{$variable-prefix}form-select-color: #{$input-color};
-     --#{$variable-prefix}form-select-bg: #{$input-bg};
-     --#{$variable-prefix}form-select-disabled-color: #{map-get($dark-grays, "600")};
-     --#{$variable-prefix}form-select-disabled-bg: #{map-get($dark-grays, "200")};
-     --#{$variable-prefix}form-select-indicator-color: #{map-get($dark-grays, "800")};
+     // // scss-docs-start form-select-variables
+     // --#{$variable-prefix}form-select-color: #{$input-color};
+     // --#{$variable-prefix}form-select-bg: #{$input-bg};
+     // --#{$variable-prefix}form-select-disabled-color: #{map-get($dark-grays, "600")};
+     // --#{$variable-prefix}form-select-disabled-bg: #{map-get($dark-grays, "200")};
+     // --#{$variable-prefix}form-select-indicator-color: #{map-get($dark-grays, "800")};
 
      // scss-docs-start form-range-variables
      --#{$variable-prefix}form-range-track-bg: #{map-get($dark-grays, "300")};

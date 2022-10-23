@@ -4,7 +4,7 @@ import { LayoutActionTypes } from './constants';
 import * as layoutConstants from '../../constants/layout';
 
 const INIT_STATE = {
-    layoutColor: layoutConstants.LAYOUT_COLOR_DARK,
+    layoutColor: layoutConstants.LAYOUT_COLOR_LIGHT,
     layoutType: layoutConstants.LAYOUT_HORIZONTAL,
     layoutWidth: layoutConstants.LAYOUT_WIDTH_FLUID,
     leftSideBarTheme: layoutConstants.LEFT_SIDEBAR_THEME_DARK,
