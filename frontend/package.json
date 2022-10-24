@@ -1,7 +1,7 @@
 {
   "name": "wahoobay",
   "version": "0.1.0",
-  "homepage": "http://everythingisalrighforever.com",
+  "homepage": "http://wahoobay.github.io",
   "private": true,
   "dependencies": {
     "@fullcalendar/bootstrap": "^5.10.1",
