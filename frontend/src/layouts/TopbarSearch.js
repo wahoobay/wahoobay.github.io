@@ -145,45 +145,45 @@ const handleFormatOptionLabel = (option) => {
     return <div>{formattedOption}</div>;
 };
 
-type TopbarSearchProps = {};
+type Wahoo BayProps = {};
 
-const TopbarSearch = (props: TopbarSearchProps): React$Element<any> => {
+const Wahoo Bay = (props: Wahoo BayProps): React$Element<any> => {
     const options = [
-        // { value: '1', label: 'Analytics Report', icon: 'uil-notes', type: 'report' },
-        // { value: '2', label: 'How can I help you?', icon: 'uil-life-ring', type: 'help' },
-        // { value: '3', label: 'User profile settings', icon: 'uil-cog', type: 'settings' },
-        // {
-        //     label: 'Erwin Brown',
-        //     value: 'users1',
-        //     type: 'users',
-        //     userDetails: {
-        //         firstname: 'Erwin',
-        //         lastname: 'Brown',
-        //         position: 'UI Designer',
-        //         avatar: Avatar2,
-        //     },
-        // },
-        // {
-        //     label: 'Jacob Deo',
-        //     value: 'users2',
-        //     type: 'users',
-        //     userDetails: {
-        //         firstname: 'Jacob',
-        //         lastname: 'Deo',
-        //         position: 'Developer',
-        //         avatar: Avatar5,
-        //     },
-        // },
+        { value: '1', label: 'Analytics Report', icon: 'uil-notes', type: 'report' },
+        { value: '2', label: 'How can I help you?', icon: 'uil-life-ring', type: 'help' },
+        { value: '3', label: 'User profile settings', icon: 'uil-cog', type: 'settings' },
+        {
+            label: 'Erwin Brown',
+            value: 'users1',
+            type: 'users',
+            userDetails: {
+                firstname: 'Erwin',
+                lastname: 'Brown',
+                position: 'UI Designer',
+                avatar: Avatar2,
+            },
+        },
+        {
+            label: 'Jacob Deo',
+            value: 'users2',
+            type: 'users',
+            userDetails: {
+                firstname: 'Jacob',
+                lastname: 'Deo',
+                position: 'Developer',
+                avatar: Avatar5,
+            },
+        },
     ];
 
-    const onClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
+    // const onClick = (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // };
 
     return (
         <>
-            <Select
+            {/* <Select
                 {...props}
                 components={{ Control, IndicatorsContainer, MenuList }}
                 placeholder={'Search...'}
@@ -197,9 +197,9 @@ const TopbarSearch = (props: TopbarSearchProps): React$Element<any> => {
                 name="search-app"
                 className="app-search dropdown"
                 classNamePrefix="react-select"
-            />
+            /> */}
         </>
     );
 };
 
-export default TopbarSearch;
+export default Wahoo Bay;

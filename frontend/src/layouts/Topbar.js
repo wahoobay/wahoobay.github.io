@@ -55,7 +55,7 @@ const Notifications = [
         messages: [
             {
                 id: 1,
-                title: 'Katherine Hendrickson',
+                title: 'Katherine Wahoo Bay',
                 subText: 'Great weather today!',
                 time: '1 day ago',
                 avatar: avatar1,
@@ -64,7 +64,7 @@ const Notifications = [
         ],
     },
     {
-        day: 'Oct 18, 222',
+        day: 'Oct 18, 2022',
         messages: [
             {
                 id: 1,

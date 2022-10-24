@@ -314,20 +314,21 @@ const Starter = (): React$Element<React$FragmentType> => {
                 </Col>
             </Row>
             <Row>
-                <Col sm={4} lg={4}>
+                {/* <Col sm={2} lg={2}>
 
                     <StatisticsChartWidget
                         description="Water Level"
                         title="Water Level"
-                        stats="-2100 mm"
+                        stats="-2100"
                         trend={{
                             textClass: 'text-success',
                             icon: 'mdi mdi-arrow-up-bold',
                             value: '3.27%',
                         }}
                         colors={['#727cf5']}
-                        data={[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]}></StatisticsChartWidget>
-                </Col>
+                        data={[-1910, -2200, -2140, -2240, -2510, -2015, -1730, -2210, -2180, -1690, -2100]}></StatisticsChartWidget>
+                        
+                </Col> */}
 
                 <Col sm={4} lg={4}>
 
@@ -338,11 +339,44 @@ const Starter = (): React$Element<React$FragmentType> => {
                         trend={{
                             textClass: 'text-success',
                             icon: 'mdi mdi-arrow-up-bold',
-                            value: '3.2 hPa',
+                            value: '3.2 hPa since yesterday',
                         }}
                         colors={['#727cf5']}
                         type="line"
-                        data={[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]}></StatisticsChartWidget>
+                        data={[1015.6, 1011.8, 1018.9, 1020.9, 1004.1, 1022.9, 1001.2, 1007.5, 1009.4, 1018.4, 1011.1]}></StatisticsChartWidget>
+                </Col>
+
+                <Col sm={2} lg={2}>
+
+                    <StatisticsChartWidget
+                        description="Water Level"
+                        title="Water Level"
+                        stats="-2100"
+                        trend={{
+                            textClass: 'text-success',
+                            icon: 'mdi mdi-arrow-up-bold',
+                            value: '3.27%',
+                        }}
+                        colors={['#f4516c']}
+                        type="bar"
+                        data={[-1910, -2200, -2140, -2240, -2510, -2015, -1730, -2210, -2180, -1690, -2100]}></StatisticsChartWidget>
+                        
+                </Col>
+
+                <Col sm={2} lg={2}>
+
+                    <StatisticsChartWidget
+                        description="Avg Wind Speed"
+                        title="Wind Speed"
+                        stats="3.2 m/s"
+                        trend={{
+                            textClass: 'text-success',
+                            icon: 'mdi mdi-arrow-up-bold',
+                            value: '1.2 m/s',
+                        }}
+                        colors={['#34bfa3']}
+                        type="line"
+                        data={[1.5, 2.8, 4.2, 3.4, 1.8, 2.3, 0.7, 1.6, 2.1, 4.9, 0.9]}></StatisticsChartWidget>
                 </Col>
 
                 <Col sm={4} lg={4}>
@@ -355,7 +389,7 @@ const Starter = (): React$Element<React$FragmentType> => {
                             textClass: 'badge bg-info',
                             icon: 'mdi mdi-arrow-up-bold',
                             value: '17.26%',
-                            time: 'Since yesterday',
+                            time: 'since yesterday',
                         }}
                         bgclassName="bg-primary"
                         textClass="text-white"></StatisticsWidget>

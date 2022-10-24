@@ -1,0 +1,12 @@
+Set light/dark default in: reducers.js
+src >> redux >> layout >> reducers.js
+
+
+
+
+notes on production build
+
+Cannot read properties of undefined (reading 'toLowerCase')
+CompileError: Begins at CSS selector .form-select:disabled
+
+commented out all form-selct entries from .scss filrs in all 3 sections: creative, modern, saas under scss >> config 
