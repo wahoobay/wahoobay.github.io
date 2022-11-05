@@ -1,5 +1,5 @@
 const MENU_ITEMS = [
-    { key: 'navigation', label: 'Navigation', isTitle: true },
+    // { key: 'navigation', label: 'Navigation', isTitle: true },
     {
         key: 'dashboards',
         label: 'Dashboard',
@@ -41,7 +41,7 @@ const MENU_ITEMS = [
     //         },
     //     ],
     // },
-    { key: 'apps', label: 'Apps', isTitle: true },
+    // { key: 'apps', label: 'Apps', isTitle: true },
     {
         key: 'apps-calendar',
         label: 'Events',
