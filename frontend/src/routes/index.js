@@ -89,6 +89,7 @@ const FAQ = React.lazy(() => import('../pages/other/FAQ'));
 const Pricing = React.lazy(() => import('../pages/other/Pricing'));
 const Maintenance = React.lazy(() => import('../pages/other/Maintenance'));
 const Starter = React.lazy(() => import('../pages/other/Starter'));
+const Powerbi = React.lazy(() => import('../pages/other/Powerbi'));
 const PreLoader = React.lazy(() => import('../pages/other/PreLoader'));
 const Timeline = React.lazy(() => import('../pages/other/Timeline'));
 
@@ -398,6 +399,10 @@ const AllRoutes = () => {
                         {
                             path: 'starter',
                             element: <LoadComponent component={Starter} />,
+                        },
+                        {
+                            path: 'powerbi',
+                            element: <LoadComponent component={Powerbi} />,
                         },
                         {
                             path: 'profile',

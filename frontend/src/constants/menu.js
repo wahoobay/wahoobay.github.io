@@ -50,11 +50,18 @@ const MENU_ITEMS = [
         url: '#',
     },
     {
-        key: 'apps-chat',
+        key: 'apps-education',
         label: 'Education',
         isTitle: false,
         icon: 'uil-book-open',
         url: '#',
+    },
+    {
+        key: 'apps-powerbi',
+        label: 'PowerBI Test',
+        isTitle: false,
+        icon: 'uil-vertical-align-bottom',
+        url: '/pages/powerbi',
     },
     // // {
     // //     key: 'apps-crm',

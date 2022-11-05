@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import StatisticsWidget from '../../components/StatisticsWidget';
 import StatisticsChartWidget from '../../components/StatisticsChartWidget';
 
+
 // images
 import cardImg1 from '../../assets/images/small/fp1.jpg';
 import cardImg2 from '../../assets/images/small/fp2.jpg';
