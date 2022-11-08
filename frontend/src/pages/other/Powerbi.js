@@ -4,10 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import { PowerBIEmbed } from 'powerbi-client-react';
 import { models } from 'powerbi-client';
 
-
-
 // components
-
 
 // images
 
