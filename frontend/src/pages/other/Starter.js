@@ -69,14 +69,20 @@ const SlidesWithCaptionsAndIndicaticators = () => {
             <Card.Body>
                 <Carousel indicators={true} activeIndex={index} onSelect={handleSelect}>
                     <Carousel.Item>
-                        <img
+                        <div className="ratio ratio-16x9">
+                        
+                        <iframe src="https://player.brownrice.com/embed/copbfl2?autoplay=1&autopause=0&muted=1" 
+                            border="0" frameborder="0" height="478" scrolling="no" 
+                            allow="autoplay" allowautoplay="true" allowfullscreen mozallowfullscreen></iframe>
+                        {/* <img
                             className="d-block w-100"
                             src={ cardImg1 }
                             alt="First slide"
-                        />
+                        /> */}
+                        </div>
                         <Carousel.Caption>
-                            <h3>Live from underwater at Wahoo Bay</h3>
-                            <p>Get up close and personal with our marine ecosystem</p>
+                            <h3>Live from Pompano Beach</h3>
+                            <p>Live video from the Pier at Pompano Beach</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
