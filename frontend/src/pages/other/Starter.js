@@ -1,9 +1,12 @@
 // @flow
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Carousel, ListGroup } from 'react-bootstrap';
 import Chart from 'react-apexcharts';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+
+// stores
+import weatherStore from '../../utils/weatherStore';
 
 // components
 import StatisticsWidget from '../../components/StatisticsWidget';
@@ -19,45 +22,6 @@ import cardImg5 from '../../assets/images/small/fpSmall2.jpg';
 import cardImg6 from '../../assets/images/small/fpSmall3.jpg';
 
 
-
-const DefaultSlides = () => {
-    return (
-        <Card>
-            <Card.Body>
-                <h4 className="header-title">Historical Look</h4>
-                <p className="text-muted font-10">
-                    &nbsp;
-                </p>
-
-                <Carousel indicators={false} controls={false}>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={ cardImg4 }
-                            alt="First slide"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={ cardImg5 }
-                            alt="Second slide"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src={ cardImg6 }
-                            alt="Third slide"
-                        />
-                    </Carousel.Item>
-                </Carousel>
-            </Card.Body>
-        </Card>
-    );
-};
-
-
 const SlidesWithCaptionsAndIndicaticators = () => {
     const [index, setIndex] = useState(0);
 
@@ -71,14 +35,14 @@ const SlidesWithCaptionsAndIndicaticators = () => {
                     <Carousel.Item>
                         <div className="ratio ratio-16x9">
                         
-                        <iframe src="https://player.brownrice.com/embed/copbfl2?autoplay=1&autopause=0&muted=1" 
+                        {/* <iframe src="https://player.brownrice.com/embed/copbfl2?autoplay=1&autopause=0&muted=1" 
                             border="0" frameborder="0" height="478" scrolling="no" 
-                            allow="autoplay" allowautoplay="true" allowfullscreen mozallowfullscreen></iframe>
-                        {/* <img
+                            allow="autoplay" allowautoplay="true" allowfullscreen mozallowfullscreen></iframe> */}
+                        <img
                             className="d-block w-100"
                             src={ cardImg1 }
                             alt="First slide"
-                        /> */}
+                        />
                         </div>
                         <Carousel.Caption>
                             <h3>Live from Pompano Beach</h3>
@@ -111,6 +75,8 @@ const SlidesWithCaptionsAndIndicaticators = () => {
                 <br />
                 <h4 className="header-title">Welcome to Wahoo Bay!</h4>
                 <p className="text-muted font-14">
+                    
+                
                 Wahoo Bay is envisioned to provide an immersive experience for park visitors, 
                 especially young children. Its purpose is to raise awareness of the importance 
                 of keeping our oceans and reefs healthy and thriving in an entertaining, 
@@ -123,6 +89,7 @@ const SlidesWithCaptionsAndIndicaticators = () => {
 
 // simple line chart
 const LineChart = (): React$Element<any> => {
+    
     // default options
     const apexLineChartWithLables = {
         chart: {
@@ -210,18 +177,23 @@ const LineChart = (): React$Element<any> => {
         },
     ];
 
+
+
     return (
         <Card>
             <Card.Body>
                 <h4 className="header-title mb-3">Today's Weather</h4>
-                <p className="display-6">24&deg;C 
-                &nbsp;
+
                 
-                <i className="uil uil-thunderstorm-sun"></i>
                 
+                {/* <p className="display-6">
+                    {weather.latest && weather.latest.airTemp}°F
+                    &nbsp;
+                    <i className="uil uil-thunderstorm-sun"></i>
+                </p>  */}
+
                 <hr className="mt-1 mb-1" />
                 
-                </p> 
                 <Chart
                     options={apexLineChartWithLables}
                     series={apexLineChartWithLablesData}
@@ -303,7 +275,60 @@ const CheckboxesandRadios = () => {
     );
 };
 
+const DefaultSlides = () => {
+    return (
+        <Card>
+            <Card.Body>
+                <h4 className="header-title">Historical Look</h4>
+                <p className="text-muted font-10">
+                    &nbsp;
+                </p>
+
+                <Carousel indicators={false} controls={false}>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={ cardImg4 }
+                            alt="First slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={ cardImg5 }
+                            alt="Second slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src={ cardImg6 }
+                            alt="Third slide"
+                        />
+                    </Carousel.Item>
+                </Carousel>
+            </Card.Body>
+        </Card>
+    );
+};
+
+
+// actual page
+// actual page
+// actual page
+
 const Starter = (): React$Element<React$FragmentType> => {
+
+// weather
+const weather = weatherStore();
+// Use effect
+useEffect(() => {
+    weather.latestFunction();
+}, []);
+useEffect(() => {
+    weather.previousFunction();
+}, []);
+
     return (
         <>
             
@@ -321,28 +346,12 @@ const Starter = (): React$Element<React$FragmentType> => {
                 </Col>
             </Row>
             <Row>
-                {/* <Col sm={2} lg={2}>
-
-                    <StatisticsChartWidget
-                        description="Water Level"
-                        title="Water Level"
-                        stats="-2100"
-                        trend={{
-                            textClass: 'text-success',
-                            icon: 'mdi mdi-arrow-up-bold',
-                            value: '3.27%',
-                        }}
-                        colors={['#727cf5']}
-                        data={[-1910, -2200, -2140, -2240, -2510, -2015, -1730, -2210, -2180, -1690, -2100]}></StatisticsChartWidget>
-                        
-                </Col> */}
-
                 <Col sm={4} lg={4}>
-
                     <StatisticsChartWidget
+
                         description="Barometer"
                         title="Barometer"
-                        stats="1014.4"
+                        stats={weather.latest && weather.latest.barPressConv + " mmHg"}
                         trend={{
                             textClass: 'text-success',
                             icon: 'mdi mdi-arrow-up-bold',
@@ -358,7 +367,7 @@ const Starter = (): React$Element<React$FragmentType> => {
                     <StatisticsChartWidget
                         description="Water Level"
                         title="Water Level"
-                        stats="-2100"
+                        stats={weather.latest && weather.latest.waterLevelR + ' mm'}
                         trend={{
                             textClass: 'text-success',
                             icon: 'mdi mdi-arrow-up-bold',
@@ -375,7 +384,7 @@ const Starter = (): React$Element<React$FragmentType> => {
                     <StatisticsChartWidget
                         description="Avg Wind Speed"
                         title="Wind Speed"
-                        stats="3.2 m/s"
+                        stats={weather.latest && weather.latest.windSpeedAvg + ' m/s'}
                         trend={{
                             textClass: 'text-success',
                             icon: 'mdi mdi-arrow-up-bold',
@@ -391,7 +400,7 @@ const Starter = (): React$Element<React$FragmentType> => {
                         icon="uil-raindrops-alt bg-light-lighten rounded-circle text-white"
                         description="Rain Accumulation"
                         title="Rain Accumulation"
-                        stats="18.51 cm"
+                        stats={weather.latest && weather.latest.rainAccum + ' mm'}
                         trend={{
                             textClass: 'badge bg-info',
                             icon: 'mdi mdi-arrow-up-bold',
@@ -413,13 +422,14 @@ const Starter = (): React$Element<React$FragmentType> => {
                         <Card.Body>
                             <h4 className="header-title">Project Overview</h4>
                             <p className="text-muted font-10">
+                                {weather.latest && weather.latest.timeConv}
                                 &nbsp;
                             </p>
-                            <div className="ratio ratio-16x9">
+                            {/* <div className="ratio ratio-16x9">
                                 <iframe
                                     src="https://www.youtube.com/embed/bcCbQQAq-2E?rel=0&amp;start&amp;end&amp;controls=1&amp;mute=0&amp;modestbranding=0&amp;autoplay=0"
                                     title="iframe"></iframe>
-                            </div>
+                            </div> */}
                         </Card.Body>
                     </Card>
 
