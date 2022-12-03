@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 // stores
 import weatherStore from '../../utils/weatherStore';
 
+
 // components
 import StatisticsWidget from '../../components/StatisticsWidget';
 import StatisticsChartWidget from '../../components/StatisticsChartWidget';
@@ -22,6 +23,7 @@ import cardImg5 from '../../assets/images/small/fpSmall2.jpg';
 import cardImg6 from '../../assets/images/small/fpSmall3.jpg';
 
 
+
 const SlidesWithCaptionsAndIndicaticators = () => {
     const [index, setIndex] = useState(0);
 
@@ -33,17 +35,11 @@ const SlidesWithCaptionsAndIndicaticators = () => {
             <Card.Body>
                 <Carousel indicators={true} activeIndex={index} onSelect={handleSelect}>
                     <Carousel.Item>
-                        <div className="ratio ratio-16x9">
-                        
-                        {/* <iframe src="https://player.brownrice.com/embed/copbfl2?autoplay=1&autopause=0&muted=1" 
-                            border="0" frameborder="0" height="478" scrolling="no" 
-                            allow="autoplay" allowautoplay="true" allowfullscreen mozallowfullscreen></iframe> */}
                         <img
                             className="d-block w-100"
                             src={ cardImg1 }
                             alt="First slide"
                         />
-                        </div>
                         <Carousel.Caption>
                             <h3>Live from Pompano Beach</h3>
                             <p>Live video from the Pier at Pompano Beach</p>
@@ -87,9 +83,20 @@ const SlidesWithCaptionsAndIndicaticators = () => {
     );
 };
 
-// simple line chart
-const LineChart = (): React$Element<any> => {
-    
+const TempChart = (): React$Element<any> => {
+
+// weather
+const weather = weatherStore();
+// Use effect
+useEffect(() => {weather.sunFunction();}, []);
+useEffect(() => {weather.latestFunction();}, []);
+useEffect(() => {weather.lastMonthFunction();}, []);
+useEffect(() => {weather.twoMonthsAgoFunction();}, []);
+useEffect(() => {weather.threeMonthsAgoFunction();}, []);
+useEffect(() => {weather.fourMonthsAgoFunction();}, []);
+useEffect(() => {weather.fiveMonthsAgoFunction();}, []);
+useEffect(() => {weather.sixMonthsAgoFunction();}, []);
+
     // default options
     const apexLineChartWithLables = {
         chart: {
@@ -107,7 +114,7 @@ const LineChart = (): React$Element<any> => {
             enabled: true,
         },
         stroke: {
-            width: [3, 3],
+            width: [2, 2],
             curve: 'smooth',
         },
         // title: {
@@ -120,7 +127,7 @@ const LineChart = (): React$Element<any> => {
         grid: {
             row: {
                 colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
-                opacity: 0.2,
+                opacity: 0.3,
             },
             borderColor: '#f1f3fa',
         },
@@ -128,18 +135,25 @@ const LineChart = (): React$Element<any> => {
             style: 'inverted',
             size: 6,
         },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        xaxis: { 
+            categories: [
+                [weather.sixMonthsAgo && weather.sixMonthsAgo.month],
+                [weather.fiveMonthsAgo && weather.fiveMonthsAgo.month],
+                [weather.fourMonthsAgo && weather.fourMonthsAgo.month],
+                [weather.threeMonthsAgo && weather.threeMonthsAgo.month],
+                [weather.twoMonthsAgo && weather.twoMonthsAgo.month],
+                [weather.lastMonth && weather.lastMonth.month],
+                ],
             title: {
                 text: 'Month',
             },
         },
         yaxis: {
             title: {
-                text: 'Temperature',
+                text: '',
             },
-            min: 5,
-            max: 40,
+            min: 70,
+            max: 90,
         },
         legend: {
             position: 'top',
@@ -147,7 +161,7 @@ const LineChart = (): React$Element<any> => {
             floating: true,
             offsetY: -25,
             offsetX: -5,
-        },
+        }, 
         responsive: [
             {
                 breakpoint: 600,
@@ -167,43 +181,55 @@ const LineChart = (): React$Element<any> => {
 
     // chart data
     const apexLineChartWithLablesData = [
-        {
-            name: 'High - 2022',
-            data: [21, 26, 23, 27, 25, 28, 30],
+        { 
+            name: 'Average Temp',
+            data: [
+                weather.sixMonthsAgo && Math.round(weather.sixMonthsAgo.airTempF),
+                weather.fiveMonthsAgo && Math.round(weather.fiveMonthsAgo.airTempF),
+                weather.fourMonthsAgo && Math.round(weather.fourMonthsAgo.airTempF),
+                weather.threeMonthsAgo && Math.round(weather.threeMonthsAgo.airTempF),
+                weather.twoMonthsAgo && Math.round(weather.twoMonthsAgo.airTempF),
+                weather.lastMonth && Math.round(weather.lastMonth.airTempF),
+            ],
         },
-        {
-            name: 'Low - 2022',
-            data: [10, 13, 11, 16, 17, 19, 21],
-        },
-    ];
+        // {
+        //     name: 'Low - 2022',
+        //     data: [10, 13, 11, 16, 17, 19, 21],
+        // },
+    ]; 
 
 
 
-    return (
-        <Card>
-            <Card.Body>
-                <h4 className="header-title mb-3">Today's Weather</h4>
+return (
+    <Card>
+        <Card.Body>
+            <h4 className="header-title mb-3">Today's Weather</h4>
 
-                
-                
-                {/* <p className="display-6">
-                    {weather.latest && weather.latest.airTemp}°F
-                    &nbsp;
-                    <i className="uil uil-thunderstorm-sun"></i>
-                </p>  */}
+            
+            
+            <p className="display-6">
+                {weather.latest && weather.latest.airTempF}°F
+                &nbsp;
+            
 
-                <hr className="mt-1 mb-1" />
-                
-                <Chart
-                    options={apexLineChartWithLables}
-                    series={apexLineChartWithLablesData}
-                    type="line"
-                    className="apex-charts"
-                />
-            </Card.Body>
-        </Card>
-    );
-};
+
+                <i className="uil uil-thunderstorm-sun"></i>
+            </p>   
+
+            <hr className="mt-1 mb-1" />
+            
+            <Chart
+                options={apexLineChartWithLables}
+                series={apexLineChartWithLablesData}
+                type="line"
+                className="apex-charts"
+            />
+        </Card.Body>
+    </Card> 
+)
+ 
+}
+
 
 const Ribbon1 = ({ label, color, direction }) => {
     return (
@@ -230,16 +256,15 @@ const Ribbon1 = ({ label, color, direction }) => {
                         <button className={classNames('btn', 'btn-sm', [`btn-${color}`])}>Get Involved</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         
-                        <Link to="#"><i className="uil  uil-facebook"></i></Link>&nbsp;
-                        <Link to="#"><i className="uil  uil-twitter"></i></Link>&nbsp;
-                        <Link to="#"><i className="uil  uil-instagram"></i></Link>&nbsp;
+                        <Link to="https://www.facebook.com/wahoobaypompano/"><i className="uil  uil-facebook"></i></Link>&nbsp;
+                        <Link to="https://www.instagram.com/wahoobaypompano/"><i className="uil  uil-instagram"></i></Link>&nbsp;
                         </span>
                     </p>
                 </div>
             </Card.Body>
         </Card>
     );
-};
+}; 
 
 const CheckboxesandRadios = () => {
     return (
@@ -317,17 +342,58 @@ const DefaultSlides = () => {
 // actual page
 // actual page
 
-const Starter = (): React$Element<React$FragmentType> => {
+const Main = (): React$Element<React$FragmentType> => {
 
 // weather
 const weather = weatherStore();
 // Use effect
-useEffect(() => {
-    weather.latestFunction();
-}, []);
-useEffect(() => {
-    weather.previousFunction();
-}, []);
+useEffect(() => {weather.latestFunction();}, []);
+useEffect(() => {weather.yesterdayFunction();}, []);
+useEffect(() => {weather.lastMonthFunction();}, []);
+useEffect(() => {weather.twoMonthsAgoFunction();}, []);
+useEffect(() => {weather.threeMonthsAgoFunction();}, []);
+useEffect(() => {weather.fourMonthsAgoFunction();}, []);
+useEffect(() => {weather.fiveMonthsAgoFunction();}, []);
+useEffect(() => {weather.sixMonthsAgoFunction();}, []);
+
+
+if (weather.latest && weather.yesterday) {
+
+    var barDiff = weather.yesterday.barPressConv - weather.latest.barPressConv;
+    var barDiffAbs = Math.abs(barDiff).toFixed(2);
+    if (weather.latest.barPressConv > weather.yesterday.barPressConv) {
+        var barDiffSign = "mdi mdi-arrow-down-bold";
+    } else {
+        var barDiffSign = "mdi mdi-arrow-up-bold";
+    }
+
+    var waterLevelDiff = weather.yesterday.waterLevelR - weather.latest.waterLevelR;
+    var waterLevelAbs = Math.abs(waterLevelDiff).toFixed(2);
+    if (weather.latest.waterLevelR > weather.yesterday.waterLevelR) {
+        var waterDiffSign = "mdi mdi-arrow-down-bold";
+    } else {
+        var waterDiffSign = "mdi mdi-arrow-up-bold";
+    }
+
+    var windSpeedDiff = weather.yesterday.windSpeedAvg - weather.latest.windSpeedAvg;
+    var windSpeedAbs = Math.abs(windSpeedDiff).toFixed(1);
+    if (weather.latest.windSpeedAvg > weather.yesterday.windSpeedAvg) {
+        var windDiffSign = "mdi mdi-arrow-down-bold";
+    } else {
+        var windDiffSign = "mdi mdi-arrow-up-bold";
+    }
+
+    var rainAccumDiff = weather.yesterday.rainAccum - weather.latest.rainAccum;
+    var rainAccumAbs = Math.abs(rainAccumDiff).toFixed(1);
+    if (weather.latest.rainAccum > weather.yesterday.rainAccum) {
+        var rainDiffSign = "mdi mdi-arrow-down-bold";
+    } else {
+        var rainDiffSign = "mdi mdi-arrow-up-bold";
+    }
+
+
+}
+
 
     return (
         <>
@@ -339,7 +405,15 @@ useEffect(() => {
                 </Col>
                 <Col sm={4} lg={4}>
                 
-                <LineChart />
+
+
+
+            <TempChart />
+        
+
+
+
+
 
                 <Ribbon1 label="About" color="danger" direction="right" />
 
@@ -354,12 +428,20 @@ useEffect(() => {
                         stats={weather.latest && weather.latest.barPressConv + " mmHg"}
                         trend={{
                             textClass: 'text-success',
-                            icon: 'mdi mdi-arrow-up-bold',
-                            value: '3.2 hPa since yesterday',
+                            icon: barDiffSign,
+                            value: barDiffAbs +  ' mmHg from yesterday',
                         }}
                         colors={['#727cf5']}
                         type="line"
-                        data={[1015.6, 1011.8, 1018.9, 1020.9, 1004.1, 1022.9, 1001.2, 1007.5, 1009.4, 1018.4, 1011.1]}></StatisticsChartWidget>
+                        data={[
+                            weather.sixMonthsAgo && weather.sixMonthsAgo.barPressConv,
+                            weather.fiveMonthsAgo && weather.fiveMonthsAgo.barPressConv,
+                            weather.fourMonthsAgo && weather.fourMonthsAgo.barPressConv,
+                            weather.threeMonthsAgo && weather.threeMonthsAgo.barPressConv,
+                            weather.twoMonthsAgo && weather.twoMonthsAgo.barPressConv,
+                            weather.lastMonth && weather.lastMonth.barPressConv,
+                            weather.latest && weather.latest.barPressConv,
+                            ]}></StatisticsChartWidget>
                 </Col>
 
                 <Col sm={2} lg={2}>
@@ -370,12 +452,19 @@ useEffect(() => {
                         stats={weather.latest && weather.latest.waterLevelR + ' mm'}
                         trend={{
                             textClass: 'text-success',
-                            icon: 'mdi mdi-arrow-up-bold',
-                            value: '3.27%',
+                            icon: waterDiffSign,
+                            value: waterLevelAbs + ' mm from yesterday',
                         }}
                         colors={['#f4516c']}
                         type="bar"
-                        data={[-1910, -2200, -2140, -2240, -2510, -2015, -1730, -2210, -2180, -1690, -2100]}></StatisticsChartWidget>
+                        data={[
+                            weather.sixMonthsAgo && weather.sixMonthsAgo.waterLevelR,
+                            weather.fiveMonthsAgo && weather.fiveMonthsAgo.waterLevelR,
+                            weather.fourMonthsAgo && weather.fourMonthsAgo.waterLevelR,
+                            weather.threeMonthsAgo && weather.threeMonthsAgo.waterLevelR,
+                            weather.twoMonthsAgo && weather.twoMonthsAgo.waterLevelR,
+                            weather.lastMonth && weather.lastMonth.waterLevelR,
+                            ]}></StatisticsChartWidget>
                         
                 </Col>
 
@@ -387,12 +476,19 @@ useEffect(() => {
                         stats={weather.latest && weather.latest.windSpeedAvg + ' m/s'}
                         trend={{
                             textClass: 'text-success',
-                            icon: 'mdi mdi-arrow-up-bold',
-                            value: '1.2 m/s',
+                            icon: windDiffSign,
+                            value: windSpeedAbs + ' m/s from yesterday',
                         }}
                         colors={['#34bfa3']}
                         type="line"
-                        data={[1.5, 2.8, 4.2, 3.4, 1.8, 2.3, 0.7, 1.6, 2.1, 4.9, 0.9]}></StatisticsChartWidget>
+                        data={[
+                            weather.sixMonthsAgo && weather.sixMonthsAgo.windSpeedAvg,
+                            weather.fiveMonthsAgo && weather.fiveMonthsAgo.windSpeedAvg,
+                            weather.fourMonthsAgo && weather.fourMonthsAgo.windSpeedAvg,
+                            weather.threeMonthsAgo && weather.threeMonthsAgo.windSpeedAvg,
+                            weather.twoMonthsAgo && weather.twoMonthsAgo.windSpeedAvg,
+                            weather.lastMonth && weather.lastMonth.windSpeedAvg,
+                        ]}></StatisticsChartWidget>
                 </Col>
 
                 <Col sm={4} lg={4}>
@@ -403,8 +499,8 @@ useEffect(() => {
                         stats={weather.latest && weather.latest.rainAccum + ' mm'}
                         trend={{
                             textClass: 'badge bg-info',
-                            icon: 'mdi mdi-arrow-up-bold',
-                            value: '17.26%',
+                            icon: rainDiffSign,
+                            value: rainAccumAbs + ' mm',
                             time: 'since yesterday',
                         }}
                         bgclassName="bg-primary"
@@ -422,14 +518,16 @@ useEffect(() => {
                         <Card.Body>
                             <h4 className="header-title">Project Overview</h4>
                             <p className="text-muted font-10">
-                                {weather.latest && weather.latest.timeConv}
+                                {/* {weather.lastMonth && weather.lastMonth.date} */}
                                 &nbsp;
                             </p>
-                            {/* <div className="ratio ratio-16x9">
+                            {/*
+                            <div className="ratio ratio-16x9">
                                 <iframe
                                     src="https://www.youtube.com/embed/bcCbQQAq-2E?rel=0&amp;start&amp;end&amp;controls=1&amp;mute=0&amp;modestbranding=0&amp;autoplay=0"
                                     title="iframe"></iframe>
-                            </div> */}
+                            </div> 
+                            */}
                         </Card.Body>
                     </Card>
 
@@ -452,4 +550,4 @@ useEffect(() => {
     );
 };
 
-export default Starter;
+export default Main;
